@@ -25,8 +25,8 @@
     data(){
       return {
         formData:{
-          aname:'',
-          apwd:''
+          aname:'admin',
+          apwd:'666666'
         }
       }
     },
@@ -34,9 +34,18 @@
       doLogin(){
         //执行登录
         var apiUrl = this.$store.state.globalSettings.apiUrl
-        var url = apiUrl+"admin/login/"+this.formData.aname+"/"+this.formData.apwd
+        var url = apiUrl+"/admin/login/"+this.formData.aname+"/"+this.formData.apwd
         this.$axios.get(url).then((res)=>{
-          console.log(res)
+          if(res.data.code == 200){
+            //登录成功
+            this.$store.commit('setAdminName',this.formData.aname)
+            this.$router.push('/main')
+          }else{
+            //登录失败
+            this.$alert('用户名或密码有误！','登录失败',{type:'error'}).then(()=>{}).catch(()=>{})
+          }
+        }).catch((err)=>{
+          console.log(err)
         })
       },
       doCancel(){
