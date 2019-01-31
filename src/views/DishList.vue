@@ -1,6 +1,10 @@
 <template>
-  <div class="about">
-    <h1>This is an DishList page</h1>
+  <div class="xfn-dishList">
+    <el-breadcrumb>
+      <el-breadcrumb-item to="/main">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>菜品管理</el-breadcrumb-item>
+      <el-breadcrumb-item>菜品列表</el-breadcrumb-item>
+    </el-breadcrumb>
   </div>
 </template>
 <script>
