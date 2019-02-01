@@ -21,11 +21,12 @@
         tableList:[]
       }
     },
-    methods:{},
     mounted(){
       var url = this.$store.state.globalSettings.apiUrl+"/admin/table"
-      this.$axios.get(url).then((res)=>{
-        this.tableList = res.data
+      this.$axios.get(url).then(({data})=>{
+        this.tableList = data
+      }).catch((err)=>{
+        console.log(err)
       })
     },
     components:{
